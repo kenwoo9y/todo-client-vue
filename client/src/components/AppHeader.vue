@@ -14,13 +14,9 @@
     </v-app-bar>
 </template>
 
-<script>
+<script setup>
+import { ref } from 'vue'
 import { mdiLogin } from '@mdi/js'
 
-export default {
-    data: () => ({
-        appName: "ToDo List",
-        mdiLogin
-    })
-}
+const appName = ref("ToDo List")
 </script>
