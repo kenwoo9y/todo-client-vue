@@ -1,7 +1,11 @@
 <template>
     <v-app-bar :elevation="5" color="primary">
         <template v-slot:prepend>
-            <v-app-bar-nav-icon></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon 
+                variant="text" 
+                @click.stop="drawer = !drawer"
+            >
+            </v-app-bar-nav-icon>
         </template>
       
         <v-app-bar-title>{{ appName }}</v-app-bar-title>
@@ -12,11 +16,15 @@
             </v-btn>
         </template>
     </v-app-bar>
+
+    <NavigationDrawers v-model="drawer"/>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { mdiLogin } from '@mdi/js'
+import NavigationDrawers from '@/components/NavigationDrawers.vue'
 
 const appName = ref("ToDo List")
+const drawer = ref(false)
 </script>
