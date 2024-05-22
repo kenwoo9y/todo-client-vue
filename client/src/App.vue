@@ -1,11 +1,10 @@
 <template>
     <v-app>
-        <Header />
-        <Footer />
+        <v-main>
+            <router-view />
+        </v-main> 
     </v-app>
 </template>
 
 <script setup>
-import Header from './components/AppHeader.vue'
-import Footer from './components/AppFooter.vue'
 </script>
