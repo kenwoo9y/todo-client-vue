@@ -17,13 +17,13 @@
         </template>
     </v-app-bar>
 
-    <NavigationDrawers v-model="drawer"/>
+    <SideMenu v-model="drawer"/>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { mdiLogin } from '@mdi/js'
-import NavigationDrawers from '@/components/NavigationDrawers.vue'
+import SideMenu from '@/components/SideMenu.vue'
 
 const appName = ref("ToDo List")
 const drawer = ref(false)
