@@ -25,6 +25,6 @@ import { ref } from 'vue'
 import { mdiLogin } from '@mdi/js'
 import SideMenu from '@/components/SideMenu.vue'
 
-const appName = ref("ToDo List")
+const appName = ref("ToDo App")
 const drawer = ref(false)
 </script>
