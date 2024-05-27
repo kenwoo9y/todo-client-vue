@@ -12,12 +12,19 @@
             :items-per-page-options="pages"
             items-per-page-text="表示行数"
             class="elevation-1"
-        ></v-data-table>
+        >
+            <template v-slot:item.actions="{ item }">
+                <TaskEdit />
+                <TaskDelete />
+            </template>
+        </v-data-table>
     </v-container>
 </template>
   
 <script setup>
 import TaskCreate from '@/components/TaskCreate.vue'
+import TaskEdit from '@/components/TaskEdit.vue'
+import TaskDelete from '@/components/TaskDelete.vue'
 import { ref } from 'vue'
 
 const itemsPerPage = ref(5)
@@ -34,7 +41,8 @@ const headers = ref([
     { title: 'タイトル', align: 'start', key: 'title' },
     { title: 'ステータス', align: 'end', key: 'status' },
     { title: '作成日', align: 'end', key: 'created_at' },
-    { title: '更新日', align: 'end', key: 'updated_at'}
+    { title: '更新日', align: 'end', key: 'updated_at'},
+    { title: '操作', align: 'end', sortable: false, key: 'actions' }
 ])
 
 // Mock
