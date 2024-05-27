@@ -1,6 +1,10 @@
 <template>
     <v-container>
+        <div class="d-flex justify-end">
+            <TaskCreate />
+        </div>
         <p class="text-h3">ToDo</p>
+        
         <v-data-table
             v-model:items-per-page="itemsPerPage"
             :headers="headers"
@@ -13,6 +17,7 @@
 </template>
   
 <script setup>
+import TaskCreate from '@/components/TaskCreate.vue'
 import { ref } from 'vue'
 
 const itemsPerPage = ref(5)
