@@ -11,8 +11,9 @@
         <v-app-bar-title>{{ appName }}</v-app-bar-title>
 
         <template v-slot:append>
-            <v-btn>
+            <v-btn class="text-capitalize">
                 <v-icon :icon="mdiLogin" />
+                &thinsp;{{ signOutText }}
             </v-btn>
         </template>
     </v-app-bar>
@@ -26,5 +27,6 @@ import { mdiLogin } from '@mdi/js'
 import SideMenu from '@/components/SideMenu.vue'
 
 const appName = ref("ToDo App")
+const signOutText = ref("Sign Out")
 const drawer = ref(false)
 </script>
