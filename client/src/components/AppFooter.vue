@@ -7,10 +7,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 const copyright = ref({
     date: "2024",
     name: "kenwoo9y"
-})
+});
 </script>

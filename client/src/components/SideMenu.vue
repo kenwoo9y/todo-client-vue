@@ -17,13 +17,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { mdiHome } from '@mdi/js'
-import { mdiForum } from '@mdi/js'
+import { mdiHome } from '@mdi/js';
+import { mdiForum } from '@mdi/js';
+import { ref } from 'vue';
 
-const model = defineModel()
+const model = defineModel();
 const items = ref([
     {title: 'Home', icon: mdiHome, link: {name: 'home'}},
     {title: 'About', icon: mdiForum, link: {name: 'about'}}
-])
+]);
 </script>

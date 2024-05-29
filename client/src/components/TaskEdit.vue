@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import {mdiPencil} from '@mdi/js'
+import { mdiPencil } from '@mdi/js';
 </script>

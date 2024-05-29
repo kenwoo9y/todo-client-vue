@@ -22,19 +22,19 @@
 </template>
   
 <script setup>
-import TaskCreate from '@/components/TaskCreate.vue'
-import TaskEdit from '@/components/TaskEdit.vue'
-import TaskDelete from '@/components/TaskDelete.vue'
-import { ref } from 'vue'
+import TaskCreate from '@/components/TaskCreate.vue';
+import TaskEdit from '@/components/TaskEdit.vue';
+import TaskDelete from '@/components/TaskDelete.vue';
+import { ref } from 'vue';
 
-const itemsPerPage = ref(5)
+const itemsPerPage = ref(5);
 
 const pages = ref([
     {value: 5, title: '5'},
     {value: 10, title: '10'},
     {value: 20, title: '20'},
     {value: -1, title: '$vuetify.dataFooter.itemsPerPageAll'}
-])
+]);
 
 const headers = ref([
     { title: 'ID', align: 'end', sortable: false, key: 'id' },
@@ -43,13 +43,13 @@ const headers = ref([
     { title: '作成日', align: 'end', key: 'created_at' },
     { title: '更新日', align: 'end', key: 'updated_at'},
     { title: '操作', align: 'end', sortable: false, key: 'actions' }
-])
+]);
 
 // Mock
 const tasks = ref([
     { id: '1', title: '朝ごはんを食べる', status: 'done', created_at: '2024-04-01', updated_at: '2024-04-01' }, 
     { id: '2', title: '歯磨きをする', status: 'doing', created_at: '2024-04-01', updated_at: '2024-04-01' },
     { id: '3', title: '着替える', status: 'todo', created_at: '2024-04-02', updated_at: '2024-04-02' }
-])
+]);
 </script>
   

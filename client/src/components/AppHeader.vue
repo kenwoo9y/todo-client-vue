@@ -22,11 +22,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { mdiLogin } from '@mdi/js'
-import SideMenu from '@/components/SideMenu.vue'
+import SideMenu from '@/components/SideMenu.vue';
+import { mdiLogin } from '@mdi/js';
+import { ref } from 'vue';
 
-const appName = ref("ToDo App")
-const signOutText = ref("Sign Out")
-const drawer = ref(false)
+const appName = ref("ToDo App");
+const signOutText = ref("Sign Out");
+const drawer = ref(false);
 </script>

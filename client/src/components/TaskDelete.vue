@@ -27,7 +27,7 @@ import { ref } from 'vue';
 
 const dialog = ref(false);
 const deleteButtonText = ref("Delete");
-const cancelButtonText = ref("Cancel")
+const cancelButtonText = ref("Cancel");
 
 const openDialog = () => {
     dialog.value = true;
