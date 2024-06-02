@@ -23,6 +23,8 @@
                     required
                 ></v-select>
 
+                <DatePicker />
+
                 <div class="d-flex justify-end my-2">
                     <v-btn class="mx-2 text-capitalize" color="primary" @click="handleClick(true)">
                         {{ registerButtonText }}
@@ -37,6 +39,7 @@
 </template>
 
 <script setup>
+import DatePicker from '@/components/DatePicker.vue'
 import { ref } from 'vue';
 
 const dialog = ref(false);
