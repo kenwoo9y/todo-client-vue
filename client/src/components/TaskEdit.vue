@@ -21,6 +21,8 @@
                     required
                 ></v-select>
 
+                <DatePicker />
+
                 <div class="d-flex justify-end my-2">
                     <v-btn class="mx-2 text-capitalize" color="warning" @click="handleClick(true)">
                         {{ updateButtonText }}
@@ -35,6 +37,7 @@
 </template>
 
 <script setup>
+import DatePicker from '@/components/DatePicker.vue';
 import { mdiPencil } from '@mdi/js';
 import { ref } from 'vue';
 
