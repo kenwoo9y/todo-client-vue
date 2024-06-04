@@ -9,7 +9,7 @@
     <v-dialog v-model="showDatePicker">
         <v-date-picker 
             v-model="selectedDate" 
-            @input="updateDate" 
+            @update:modelValue="updateDate"
         ></v-date-picker>
     </v-dialog>
 </template>
