@@ -11,8 +11,13 @@
             :items="tasks"
             :items-per-page-options="pages"
             items-per-page-text="表示行数"
-            class="elevation-1"
+            class="elevation-1" 
+            hover 
+            @click:row="router.push('/detail')"
         >
+            <template v-slot:item.index="{ index }">
+                {{ index + 1 }}
+            </template>
             <template v-slot:item.actions="{ item }">
                 <TaskEdit />
                 <TaskDelete />
@@ -26,6 +31,9 @@ import TaskCreate from '@/components/TaskCreate.vue';
 import TaskEdit from '@/components/TaskEdit.vue';
 import TaskDelete from '@/components/TaskDelete.vue';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const itemsPerPage = ref(5);
 
@@ -37,19 +45,18 @@ const pages = ref([
 ]);
 
 const headers = ref([
-    { title: 'ID', align: 'end', sortable: false, key: 'id' },
-    { title: 'タイトル', align: 'start', key: 'title' },
+    { title: '#', align: 'end', sortable: false, key: 'index'}, 
+    { title: 'タイトル', align: 'start', key: 'title' }, 
+    { title: '期日', align: 'end', key: 'due_date'}, 
     { title: 'ステータス', align: 'end', key: 'status' },
-    { title: '作成日', align: 'end', key: 'created_at' },
-    { title: '更新日', align: 'end', key: 'updated_at'},
     { title: '操作', align: 'end', sortable: false, key: 'actions' }
 ]);
 
 // Mock
 const tasks = ref([
-    { id: '1', title: '朝ごはんを食べる', status: 'done', created_at: '2024-04-01', updated_at: '2024-04-01' }, 
-    { id: '2', title: '歯磨きをする', status: 'doing', created_at: '2024-04-01', updated_at: '2024-04-01' },
-    { id: '3', title: '着替える', status: 'todo', created_at: '2024-04-02', updated_at: '2024-04-02' }
+    { id: '1', title: '朝ごはんを食べる', due_date: '2024-04-10', status: 'done', created_at: '2024-04-01', updated_at: '2024-04-01' }, 
+    { id: '2', title: '歯磨きをする', due_date: '2024-04-11', status: 'doing', created_at: '2024-04-01', updated_at: '2024-04-01' },
+    { id: '3', title: '着替える', due_date: '2024-04-12', status: 'todo', created_at: '2024-04-02', updated_at: '2024-04-02' }
 ]);
 </script>
   
