@@ -1,5 +1,5 @@
 <template>
-    <v-icon :icon="mdiDelete" small class="mr-2" @click="openDialog"></v-icon>
+    <v-icon :icon="mdiDelete" small class="mr-2" @click.stop="openDialog"></v-icon>
 
     <v-dialog v-model="dialog" max-width="500">
         <v-sheet>
