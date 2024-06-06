@@ -4,6 +4,11 @@
             <v-btn variant="outlined" class="text-capitalize" @click="router.push('/')">Go Back</v-btn>
         </div>
 
+        <div class="d-flex justify-end">
+            <TaskEdit />
+            <TaskDelete />
+        </div>
+
         <v-card class="md:mx-4 my-4 md:px-4 py-4">
             <v-table hover>
                 <tbody>
@@ -38,6 +43,8 @@
 </template>
 
 <script setup>
+import TaskEdit from '@/components/TaskEdit.vue';
+import TaskDelete from '@/components/TaskDelete.vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
