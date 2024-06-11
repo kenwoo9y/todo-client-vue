@@ -15,17 +15,30 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
+
+const props = defineProps({
+    modelValue: {
+        type: String, 
+        default: ''
+    }
+});
+const emit = defineEmits(['update:modelValue']);
 
 const showDatePicker = ref(false);
-const selectedDate = ref(null);
+const localSelectedDate = ref(null);
 
 const formattedDate = computed(() => {
-    return selectedDate.value ? new Date(selectedDate.value).toLocaleDateString() : '';
+    return localSelectedDate.value ? new Date(localSelectedDate.value).toLocaleDateString() : '';
 });
 
 const updateDate = (date) => {
-    selectedDate.value = date;
+    localSelectedDate.value = date;
+    emit('update:modelValue', date)
     showDatePicker.value = false;
 };
+
+watch(() => props.modelValue, (newValue) => {
+    localSelectedDate.value = newValue;
+});
 </script>
