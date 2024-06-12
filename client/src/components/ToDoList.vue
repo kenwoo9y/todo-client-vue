@@ -49,7 +49,7 @@ const pages = ref([
 const headers = ref([
     { title: '#', align: 'end', sortable: false, key: 'index'}, 
     { title: 'タイトル', align: 'start', key: 'title' }, 
-    { title: '期日', align: 'end', key: 'due_date'}, 
+    { title: '期日', align: 'end', key: 'dueDate'}, 
     { title: 'ステータス', align: 'end', key: 'status' },
     { title: '操作', align: 'end', sortable: false, key: 'actions' }
 ]);
