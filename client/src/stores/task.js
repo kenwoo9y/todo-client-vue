@@ -5,6 +5,11 @@ export const useTaskStore = defineStore('task', () => {
   // state
   const tasks = ref([]);
 
+  // getters
+  function getTasks() {
+    return tasks.value;
+  }
+
   // actions
   function addTask(task) {
     tasks.value.push({
@@ -20,6 +25,7 @@ export const useTaskStore = defineStore('task', () => {
 
   return { 
     tasks, 
+    getTasks, 
     addTask
   };
 });
