@@ -18,9 +18,7 @@ export const useTaskStore = defineStore('task', () => {
       dueDate: task.dueDate, 
       status: task.status
     });
-
-    // print log
-    console.log(tasks.value[0]);
+    
   };
 
   return { 

@@ -35,6 +35,7 @@ import { useRouter } from 'vue-router';
 import { useTaskStore } from '@/stores/task.js';
 
 const router = useRouter();
+const taskStore = useTaskStore();
 
 const itemsPerPage = ref(5);
 
@@ -53,14 +54,6 @@ const headers = ref([
     { title: '操作', align: 'end', sortable: false, key: 'actions' }
 ]);
 
-const taskStore = useTaskStore();
 const tasks = ref(taskStore.getTasks());
-
-// Mock
-// const tasks = ref([
-//     { id: '1', title: '朝ごはんを食べる', due_date: '2024-04-10', status: 'done', created_at: '2024-04-01', updated_at: '2024-04-01' }, 
-//     { id: '2', title: '歯磨きをする', due_date: '2024-04-11', status: 'doing', created_at: '2024-04-01', updated_at: '2024-04-01' },
-//     { id: '3', title: '着替える', due_date: '2024-04-12', status: 'todo', created_at: '2024-04-02', updated_at: '2024-04-02' }
-// ]);
 </script>
   
