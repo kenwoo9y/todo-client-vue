@@ -1,5 +1,6 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
+import { formatDate } from '@/utils/dateUtils'
 
 export const useTaskStore = defineStore('task', () => {
   // state
@@ -15,10 +16,9 @@ export const useTaskStore = defineStore('task', () => {
     tasks.value.push({
       title: task.title, 
       description: task.description, 
-      dueDate: task.dueDate, 
+      dueDate: formatDate(task.dueDate), 
       status: task.status
     });
-    
   };
 
   return { 
