@@ -25,6 +25,17 @@ export const useTaskStore = defineStore('task', () => {
     });
   }
 
+  function updateTask(taskUpdate) {
+    const index = tasks.value.findIndex(task => task.id === taskUpdate.id);
+    if (index !== -1) {
+      tasks.value[index] = {
+        ...tasks.value[index], 
+        ...updateTask, 
+        dueDate: formatDate(taskUpdate.dueDate)
+      };
+    }
+  }
+
   function deleteTask(id) {
     tasks.value = tasks.value.filter(task => task.id !== id);
   }
@@ -34,6 +45,7 @@ export const useTaskStore = defineStore('task', () => {
     getTask, 
     getTasks, 
     addTask, 
+    updateTask, 
     deleteTask
   };
 });
