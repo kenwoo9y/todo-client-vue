@@ -7,6 +7,10 @@ export const useTaskStore = defineStore('task', () => {
   const tasks = ref([]);
 
   // getters
+  function getTask(id) {
+    return tasks.value.find(task => task.id === id);
+  }
+
   function getTasks() {
     return tasks.value;
   }
@@ -27,6 +31,7 @@ export const useTaskStore = defineStore('task', () => {
 
   return { 
     tasks, 
+    getTask, 
     getTasks, 
     addTask, 
     deleteTask
