@@ -19,11 +19,16 @@ export const useTaskStore = defineStore('task', () => {
       dueDate: formatDate(task.dueDate), 
       status: task.status
     });
-  };
+  }
+
+  function deleteTask(id) {
+    tasks.value = tasks.value.filter(task => task.id !== id);
+  }
 
   return { 
     tasks, 
     getTasks, 
-    addTask
+    addTask, 
+    deleteTask
   };
 });
