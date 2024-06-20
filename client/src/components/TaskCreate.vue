@@ -58,7 +58,8 @@ const newTask = ref({
     title: '', 
     description: '', 
     dueDate: '', 
-    status: 'ToDo'
+    status: 'ToDo',
+    owner_id: '1'
 });
 
 const openDialog = () => {
@@ -72,7 +73,8 @@ const handleClick = (isRegister) => {
             title: '', 
             description: '', 
             dueDate: '', 
-            status: 'ToDo'
+            status: 'ToDo', 
+            owner_id: ''
         };
     }
     dialog.value = false;

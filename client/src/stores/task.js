@@ -1,6 +1,7 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
-import { formatDate } from '@/utils/dateUtils'
+import { formatDate } from '@/utils/dateUtils';
+import { apiClient } from '@/plugins/axios';
 
 export const useTaskStore = defineStore('task', () => {
   // state
@@ -16,13 +17,21 @@ export const useTaskStore = defineStore('task', () => {
   }
 
   // actions
-  function addTask(task) {
-    tasks.value.push({
-      title: task.title, 
-      description: task.description, 
-      dueDate: formatDate(task.dueDate), 
-      status: task.status
-    });
+  async function addTask(task) {
+    try {
+      const formattedTask = {
+        title: task.title,
+        description: task.description,
+        due_date: formatDate(task.dueDate),
+        status: task.status,
+        owner_id: task.owner_id
+      };
+      console.log('Sending task:', formattedTask);
+      const response = await apiClient.post('/tasks', formattedTask);
+      tasks.value.push(response.data);
+    } catch(error) {
+      console.error('Failed to add task:', error);
+    }
   }
 
   function updateTask(taskUpdate) {
