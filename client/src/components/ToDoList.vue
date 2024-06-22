@@ -30,7 +30,7 @@
 import TaskCreate from '@/components/TaskCreate.vue';
 import TaskEdit from '@/components/TaskEdit.vue';
 import TaskDelete from '@/components/TaskDelete.vue';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useTaskStore } from '@/stores/task.js';
 
@@ -49,11 +49,16 @@ const pages = ref([
 const headers = ref([
     { title: '#', align: 'end', sortable: false, key: 'index'}, 
     { title: 'タイトル', align: 'start', key: 'title' }, 
-    { title: '期日', align: 'end', key: 'dueDate'}, 
+    { title: '期日', align: 'end', key: 'due_date'}, 
     { title: 'ステータス', align: 'end', key: 'status' },
     { title: '操作', align: 'end', sortable: false, key: 'actions' }
 ]);
 
-const tasks = ref(taskStore.getTasks());
+const tasks = ref([]);
+
+onMounted(async () => {
+    await taskStore.getTasks();  // 非同期関数を呼び出してタスクを取得
+    tasks.value = taskStore.tasks;  // 取得したタスクをtasksに設定
+});
 </script>
   
