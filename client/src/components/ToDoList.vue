@@ -13,7 +13,7 @@
             items-per-page-text="表示行数"
             class="elevation-1" 
             hover 
-            @click:row="router.push('/detail')"
+            @click:row="handleRowClick"
         >
             <template v-slot:item.index="{ index }">
                 {{ index + 1 }}
@@ -60,5 +60,10 @@ onMounted(async () => {
     await taskStore.getTasks();  // 非同期関数を呼び出してタスクを取得
     tasks.value = taskStore.tasks;  // 取得したタスクをtasksに設定
 });
+
+const handleRowClick = (event, row) => {
+    console.log('Clicked item:', row.item);
+    router.push({ path: `/detail/${row.item.id}` });
+}
 </script>
   
