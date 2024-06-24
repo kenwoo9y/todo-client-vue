@@ -14,27 +14,27 @@
                 <tbody>
                     <tr>
                         <td>{{ headerTitles[0] }}</td>
-                        <td>{{ task[0].title }}</td>
+                        <td>{{ task.title }}</td>
                     </tr>
                     <tr>
                         <td>{{ headerTitles[1] }}</td>
-                        <td>{{ task[0].detail }}</td>
+                        <td>{{ task.description }}</td>
                     </tr>
                     <tr>
                         <td>{{ headerTitles[2] }}</td>
-                        <td>{{ task[0].dueDate }}</td>
+                        <td>{{ task.due_date }}</td>
                     </tr>
                     <tr>
                         <td>{{ headerTitles[3] }}</td>
-                        <td>{{ task[0].status }}</td>
+                        <td>{{ task.status }}</td>
                     </tr>
                     <tr>
                         <td>{{ headerTitles[4] }}</td>
-                        <td>{{ task[0].created_at }}</td>
+                        <td>{{ formatDateTime(task.created_at) }}</td>
                     </tr>
                     <tr>
                         <td>{{ headerTitles[5] }}</td>
-                        <td>{{ task[0].updated_at }}</td>
+                        <td>{{ formatDateTime(task.updated_at) }}</td>
                     </tr>
                 </tbody>
             </v-table>
@@ -45,16 +45,29 @@
 <script setup>
 import TaskEdit from '@/components/TaskEdit.vue';
 import TaskDelete from '@/components/TaskDelete.vue';
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { ref, onMounted } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import { useTaskStore } from '@/stores/task.js';
+import { formatDateTime } from '@/utils/dateUtils';
 
 const router = useRouter();
+const route = useRoute();
+const taskStore = useTaskStore();
+
 const headerTitles = ref([
-    "タイトル", "詳細", "期日", "ステータス", "作成日", "更新日"
+    "タイトル", "詳細", "期日", "ステータス", "作成日時", "更新日時"
 ]);
 
-// Mock
-const task = ref([
-    { id: '1', title: '朝ごはんを食べる', detail: 'ご飯、味噌汁、納豆、卵', dueDate: '2024-04-10', status: 'done', created_at: '2024-04-01', updated_at: '2024-04-01' }, 
-]);
+const task = ref({});
+
+onMounted(async () => {
+    const taskId = parseInt(route.params.id, 10);
+    await taskStore.getTasks();
+    const fetchedTask = taskStore.getTask(taskId);
+    if(fetchedTask) {
+        task.value = fetchedTask;
+    } else {
+        console.error(`Task with id ${taskId} not found`);
+    }
+});
 </script>
