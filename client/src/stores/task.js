@@ -41,14 +41,21 @@ export const useTaskStore = defineStore('task', () => {
     }
   }
 
-  function updateTask(taskUpdate) {
-    const index = tasks.value.findIndex(task => task.id === taskUpdate.id);
-    if (index !== -1) {
-      tasks.value[index] = {
-        ...tasks.value[index], 
-        ...updateTask, 
-        dueDate: formatDate(taskUpdate.dueDate)
-      };
+  async function updateTask(taskUpdate) {
+    try {
+      const response = await apiClient.put(`/tasks/${taskUpdate.id}`, {
+        title: taskUpdate.title,
+        description: taskUpdate.description,
+        due_date: formatDate(taskUpdate.due_date),
+        status: taskUpdate.status
+      });
+
+      const index = tasks.value.findIndex(task => task.id === taskUpdate.id);
+      if (index !== -1) {
+        tasks.value[index] = response.data;
+      }
+    } catch(error) {
+      console.error('Failed to update task:', error);
     }
   }
 

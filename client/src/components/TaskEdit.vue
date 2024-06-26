@@ -42,6 +42,7 @@
 import DatePicker from '@/components/DatePicker.vue';
 import { mdiPencil } from '@mdi/js';
 import { ref, defineProps, watch } from 'vue';
+import { useTaskStore } from '@/stores/task.js';
 
 const props = defineProps({
     task: {
@@ -60,6 +61,8 @@ const description = ref('');
 const status = ref('');
 const dueDate = ref('');
 
+const taskStore = useTaskStore();
+
 const openDialog = () => {
     title.value = props.task.title;
     description.value = props.task.description;
@@ -72,8 +75,15 @@ const openDialog = () => {
 };
 
 const handleUpdate = () => {
+    taskStore.updateTask({
+        id: props.task.id, 
+        title: title.value, 
+        description: description.value, 
+        status: status.value, 
+        due_date: dueDate.value
+    });
+
     dialog.value = false;
-    // Update the task using store or API call
 };
 
 const handleCancel = () => {
