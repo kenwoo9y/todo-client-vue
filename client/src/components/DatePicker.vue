@@ -28,6 +28,9 @@ const emit = defineEmits(['update:modelValue']);
 const showDatePicker = ref(false);
 const localSelectedDate = ref(null);
 
+// 初期値をpropsから設定
+localSelectedDate.value = props.modelValue;
+
 const formattedDate = computed(() => {
     return localSelectedDate.value ? new Date(localSelectedDate.value).toLocaleDateString() : '';
 });

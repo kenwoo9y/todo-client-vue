@@ -19,7 +19,7 @@
                 {{ index + 1 }}
             </template>
             <template v-slot:item.actions="{ item }">
-                <TaskEdit />
+                <TaskEdit :task="item" />
                 <TaskDelete />
             </template>
         </v-data-table>

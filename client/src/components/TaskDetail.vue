@@ -5,7 +5,7 @@
         </div>
 
         <div class="d-flex justify-end">
-            <TaskEdit />
+            <TaskEdit :task="task" />
             <TaskDelete />
         </div>
 
