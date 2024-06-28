@@ -59,8 +59,13 @@ export const useTaskStore = defineStore('task', () => {
     }
   }
 
-  function deleteTask(id) {
-    tasks.value = tasks.value.filter(task => task.id !== id);
+  async function deleteTask(id) {
+    try {
+      await apiClient.delete(`/task/${id}`);
+      tasks.value = tasks.value.filter(task => task.id !== id);
+    } catch(error) {
+      console.error('Failed to delete task:', error);
+    }
   }
 
   return { 

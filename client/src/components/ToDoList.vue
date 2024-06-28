@@ -20,7 +20,7 @@
             </template>
             <template v-slot:item.actions="{ item }">
                 <TaskEdit :task="item" />
-                <TaskDelete />
+                <TaskDelete :task="item"/>
             </template>
         </v-data-table>
     </v-container>
