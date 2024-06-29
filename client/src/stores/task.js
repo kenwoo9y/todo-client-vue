@@ -61,7 +61,7 @@ export const useTaskStore = defineStore('task', () => {
 
   async function deleteTask(id) {
     try {
-      await apiClient.delete(`/task/${id}`);
+      await apiClient.delete(`/tasks/${id}`);
       tasks.value = tasks.value.filter(task => task.id !== id);
     } catch(error) {
       console.error('Failed to delete task:', error);
