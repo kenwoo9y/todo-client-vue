@@ -47,12 +47,8 @@ const openDialog = () => {
 };
 
 const handleDelete = async () => {
-    try {
-        await taskStore.deleteTask(props.task.id);
-        dialog.value = false;
-    } catch (error) {
-        console.error('Failed to delete task:', error);
-    }
+    await taskStore.deleteTask(props.task.id);
+    dialog.value = false;
 };
 
 const handleCancel = () => {
