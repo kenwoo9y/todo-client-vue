@@ -30,7 +30,7 @@
 import TaskCreate from '@/components/TaskCreate.vue';
 import TaskEdit from '@/components/TaskEdit.vue';
 import TaskDelete from '@/components/TaskDelete.vue';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { useTaskStore } from '@/stores/task.js';
 
@@ -59,6 +59,10 @@ const tasks = ref([]);
 onMounted(async () => {
     await taskStore.getTasks();  // 非同期関数を呼び出してタスクを取得
     tasks.value = taskStore.tasks;  // 取得したタスクをtasksに設定
+});
+
+watch(() => taskStore.tasks, (newTasks) => {
+    tasks.value = newTasks;
 });
 
 const handleRowClick = (event, row) => {
