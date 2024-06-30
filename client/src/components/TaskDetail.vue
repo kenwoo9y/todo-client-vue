@@ -6,7 +6,7 @@
 
         <div class="d-flex justify-end">
             <TaskEdit :task="task" />
-            <TaskDelete />
+            <TaskDelete :task="task"/>
         </div>
 
         <v-card class="md:mx-4 my-4 md:px-4 py-4">

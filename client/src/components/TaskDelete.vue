@@ -27,6 +27,7 @@
 <script setup>
 import { mdiDelete } from '@mdi/js';
 import { ref, defineProps } from 'vue';
+import { useRouter } from 'vue-router';
 import { useTaskStore } from '@/stores/task.js';
 
 const props = defineProps({
@@ -40,6 +41,7 @@ const dialog = ref(false);
 const deleteButtonText = ref("Delete");
 const cancelButtonText = ref("Cancel");
 
+const router = useRouter();
 const taskStore = useTaskStore();
 
 const openDialog = () => {
@@ -49,6 +51,7 @@ const openDialog = () => {
 const handleDelete = async () => {
     await taskStore.deleteTask(props.task.id);
     dialog.value = false;
+    router.push({path: '/'});
 };
 
 const handleCancel = () => {
