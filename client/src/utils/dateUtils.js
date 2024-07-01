@@ -27,6 +27,9 @@ export function formatDateTime(originalDateTime) {
     // 入力された文字列をDateオブジェクトに変換
     const date = new Date(originalDateTime);
 
+    // 日本標準時 (JST) にするために9時間を加算
+    date.setHours(date.getHours() + 9);
+
     // 年、月、日、時、分を取得
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0'); // 月は0から始まるため+1し、2桁にパディング
