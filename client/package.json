@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "lint:check": "eslint . '**/*.{js,vue}'",
     "lint:fix": "eslint . --fix '**/*.{js,vue}'",
-    "format": "prettier --write src/"
+    "format:check": "prettier -c 'src/**/*.{js,vue}'",
+    "format:fix": "prettier -w 'src/**/*.{js,vue}'"
   },
   "dependencies": {
     "axios": "^1.7.2",
