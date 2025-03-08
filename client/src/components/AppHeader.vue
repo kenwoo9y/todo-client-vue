@@ -1,13 +1,13 @@
 <template>
   <v-app-bar :elevation="5" color="primary">
-    <template v-slot:prepend>
+    <template #prepend>
       <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer">
       </v-app-bar-nav-icon>
     </template>
 
     <v-app-bar-title>{{ appName }}</v-app-bar-title>
 
-    <template v-slot:append>
+    <template #append>
       <v-btn class="text-capitalize">
         <v-icon :icon="mdiLogin" />
         &thinsp;{{ signOutText }}

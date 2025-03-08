@@ -15,10 +15,10 @@
       hover
       @click:row="handleRowClick"
     >
-      <template v-slot:item.index="{ index }">
+      <template #item.index="{ index }">
         {{ index + 1 }}
       </template>
-      <template v-slot:item.actions="{ item }">
+      <template #item.actions="{ item }">
         <TaskEdit :task="item" />
         <TaskDelete :task="item" />
       </template>

@@ -2,7 +2,7 @@
   <v-navigation-drawer v-model="model">
     <v-list nav>
       <v-list-item v-for="item in items" :key="item.title" :to="item.link">
-        <template v-slot:prepend>
+        <template #prepend>
           <v-icon :icon="item.icon"></v-icon>
         </template>
 
