@@ -1,27 +1,27 @@
 <template>
-    <v-text-field 
-        v-model="formattedDate" 
-        label="Due Date" 
-        readonly
-        @click="showDatePicker = true"
-    ></v-text-field>
+  <v-text-field
+    v-model="formattedDate"
+    label="Due Date"
+    readonly
+    @click="showDatePicker = true"
+  ></v-text-field>
 
-    <v-dialog v-model="showDatePicker">
-        <v-date-picker 
-            v-model="selectedDate" 
-            @update:modelValue="updateDate"
-        ></v-date-picker>
-    </v-dialog>
+  <v-dialog v-model="showDatePicker">
+    <v-date-picker
+      v-model="selectedDate"
+      @update:modelValue="updateDate"
+    ></v-date-picker>
+  </v-dialog>
 </template>
 
 <script setup>
 import { ref, computed, watch } from 'vue';
 
 const props = defineProps({
-    modelValue: {
-        type: String, 
-        default: ''
-    }
+  modelValue: {
+    type: String,
+    default: '',
+  },
 });
 const emit = defineEmits(['update:modelValue']);
 
@@ -32,16 +32,21 @@ const localSelectedDate = ref(null);
 localSelectedDate.value = props.modelValue;
 
 const formattedDate = computed(() => {
-    return localSelectedDate.value ? new Date(localSelectedDate.value).toLocaleDateString() : '';
+  return localSelectedDate.value
+    ? new Date(localSelectedDate.value).toLocaleDateString()
+    : '';
 });
 
 const updateDate = (date) => {
-    localSelectedDate.value = date;
-    emit('update:modelValue', date)
-    showDatePicker.value = false;
+  localSelectedDate.value = date;
+  emit('update:modelValue', date);
+  showDatePicker.value = false;
 };
 
-watch(() => props.modelValue, (newValue) => {
+watch(
+  () => props.modelValue,
+  (newValue) => {
     localSelectedDate.value = newValue;
-});
+  },
+);
 </script>

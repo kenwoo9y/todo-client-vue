@@ -1,7 +1,7 @@
 <template>
-    <Footer />
-    <Header />
-    <TaskDetail />
+  <Footer />
+  <Header />
+  <TaskDetail />
 </template>
 
 <script setup>

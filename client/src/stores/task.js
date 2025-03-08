@@ -9,7 +9,7 @@ export const useTaskStore = defineStore('task', () => {
 
   // getters
   function getTask(id) {
-    return tasks.value.find(task => task.id === id);
+    return tasks.value.find((task) => task.id === id);
   }
 
   async function getTasks() {
@@ -18,7 +18,7 @@ export const useTaskStore = defineStore('task', () => {
       const response = await apiClient.get('/tasks');
       tasks.value = response.data;
       console.log('tasks:', tasks.value);
-    } catch(error) {
+    } catch (error) {
       console.error('Failed to get tasks:', error);
     }
   }
@@ -31,12 +31,12 @@ export const useTaskStore = defineStore('task', () => {
         description: task.description,
         due_date: formatDate(task.dueDate),
         status: task.status,
-        owner_id: task.owner_id
+        owner_id: task.owner_id,
       };
       console.log('Sending task:', formattedTask);
       const response = await apiClient.post('/tasks', formattedTask);
       tasks.value.push(response.data);
-    } catch(error) {
+    } catch (error) {
       console.error('Failed to add task:', error);
     }
   }
@@ -47,14 +47,14 @@ export const useTaskStore = defineStore('task', () => {
         title: taskUpdate.title,
         description: taskUpdate.description,
         due_date: formatDate(taskUpdate.due_date),
-        status: taskUpdate.status
+        status: taskUpdate.status,
       });
 
-      const index = tasks.value.findIndex(task => task.id === taskUpdate.id);
+      const index = tasks.value.findIndex((task) => task.id === taskUpdate.id);
       if (index !== -1) {
         tasks.value[index] = response.data;
       }
-    } catch(error) {
+    } catch (error) {
       console.error('Failed to update task:', error);
     }
   }
@@ -62,18 +62,18 @@ export const useTaskStore = defineStore('task', () => {
   async function deleteTask(id) {
     try {
       await apiClient.delete(`/tasks/${id}`);
-      tasks.value = tasks.value.filter(task => task.id !== id);
-    } catch(error) {
+      tasks.value = tasks.value.filter((task) => task.id !== id);
+    } catch (error) {
       console.error('Failed to delete task:', error);
     }
   }
 
-  return { 
-    tasks, 
-    getTask, 
-    getTasks, 
-    addTask, 
-    updateTask, 
-    deleteTask
+  return {
+    tasks,
+    getTask,
+    getTasks,
+    addTask,
+    updateTask,
+    deleteTask,
   };
 });
