@@ -17,7 +17,10 @@ import { mdiHome } from '@mdi/js';
 import { mdiForum } from '@mdi/js';
 import { ref } from 'vue';
 
-const model = defineModel();
+const model = defineModel({
+  type: Boolean,
+  default: false
+});
 const items = ref([
   { title: 'Home', icon: mdiHome, link: { name: 'home' } },
   { title: 'About', icon: mdiForum, link: { name: 'about' } },

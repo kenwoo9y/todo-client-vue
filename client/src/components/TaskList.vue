@@ -15,10 +15,10 @@
       hover
       @click:row="handleRowClick"
     >
-      <template #item.index="{ index }">
+      <template #[`item.index`]="{ index }">
         {{ index + 1 }}
       </template>
-      <template #item.actions="{ item }">
+      <template #[`item.actions`]="{ item }">
         <TaskEdit :task="item" />
         <TaskDelete :task="item" />
       </template>
