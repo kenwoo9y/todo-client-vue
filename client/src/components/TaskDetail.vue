@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-import TaskEdit from '@/components/TaskEdit.vue';
+import TaskEdit from '@/components/TaskUpdate.vue';
 import TaskDelete from '@/components/TaskDelete.vue';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';

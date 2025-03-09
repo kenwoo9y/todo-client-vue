@@ -28,7 +28,7 @@
 
 <script setup>
 import TaskCreate from '@/components/TaskCreate.vue';
-import TaskEdit from '@/components/TaskEdit.vue';
+import TaskEdit from '@/components/TaskUpdate.vue';
 import TaskDelete from '@/components/TaskDelete.vue';
 import { ref, onMounted, watch } from 'vue';
 import { useRouter } from 'vue-router';
