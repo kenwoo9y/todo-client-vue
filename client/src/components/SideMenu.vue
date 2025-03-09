@@ -1,7 +1,12 @@
 <template>
-  <v-navigation-drawer v-model="model">
+  <v-navigation-drawer v-model="model" temporary>
     <v-list nav>
-      <v-list-item v-for="item in items" :key="item.title" :to="item.link">
+      <v-list-item
+        v-for="item in items"
+        :key="item.title"
+        :to="item.link"
+        @click="model = false"
+      >
         <template #prepend>
           <v-icon :icon="item.icon"></v-icon>
         </template>
