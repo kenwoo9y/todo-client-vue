@@ -8,7 +8,7 @@
 
     <v-textarea v-model="formData.description" label="詳細"></v-textarea>
 
-    <date-picker v-model="formData.dueDate"></date-picker>
+    <date-picker v-model="formData.due_date"></date-picker>
 
     <v-select
       v-model="formData.status"

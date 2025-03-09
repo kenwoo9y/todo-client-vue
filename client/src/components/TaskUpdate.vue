@@ -26,6 +26,7 @@ import { mdiPencil } from '@mdi/js';
 import { ref, defineProps, watch } from 'vue';
 import { useTaskStore } from '@/stores/task.js';
 import TaskForm from '@/components/TaskForm.vue';
+import { formatDate } from '@/utils/dateUtils';
 
 const props = defineProps({
   task: {
@@ -40,7 +41,7 @@ const statusList = ref(['ToDo', 'Doing', 'Done']);
 const editingTask = ref({
   title: props.task.title,
   description: props.task.description,
-  dueDate: props.task.due_date,
+  due_date: props.task.due_date ? formatDate(props.task.due_date) : '',
   status: props.task.status,
   owner_id: props.task.owner_id,
 });
@@ -63,19 +64,13 @@ const handleCancel = () => {
   dialog.value = false;
 };
 
-watch(
-  () => props.task,
-  (newTask) => {
-    if (dialog.value) {
-      editingTask.value = {
-        title: newTask.title,
-        description: newTask.detail,
-        status: newTask.status,
-        dueDate: newTask.due_date,
-        owner_id: newTask.owner_id,
-      };
-    }
-  },
-  { immediate: true },
-);
+watch(() => props.task, (newTask) => {
+  editingTask.value = {
+    title: newTask.title,
+    description: newTask.description,
+    due_date: newTask.due_date ? formatDate(newTask.due_date) : '',
+    status: newTask.status,
+    owner_id: newTask.owner_id,
+  };
+}, { immediate: true });
 </script>

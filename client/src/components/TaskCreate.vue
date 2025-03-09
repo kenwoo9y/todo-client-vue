@@ -28,7 +28,7 @@ const taskStore = useTaskStore();
 const newTask = ref({
   title: '',
   description: '',
-  dueDate: '',
+  due_date: '',
   status: 'ToDo',
   owner_id: '1',
 });
@@ -42,7 +42,7 @@ const handleSubmit = (formData) => {
   newTask.value = {
     title: '',
     description: '',
-    dueDate: '',
+    due_date: '',
     status: 'ToDo',
     owner_id: '1',
   };
