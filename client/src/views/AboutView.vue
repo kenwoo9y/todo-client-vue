@@ -1,6 +1,4 @@
 <template>
-  <Footer />
-  <Header />
   <v-container>
     <v-row>
       <v-col cols="12">
@@ -34,9 +32,6 @@
 </template>
 
 <script setup>
-import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue';
-
 const features = [
   'Simple and intuitive task management',
   'Easy task creation, editing, and deletion',
