@@ -1,11 +1,11 @@
 <template>
   <Footer />
   <Header />
-  <TaskList />
+  <TaskTable />
 </template>
 
 <script setup>
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
-import TaskList from '@/components/TaskList.vue';
+import TaskTable from '@/components/TaskTable.vue';
 </script>
