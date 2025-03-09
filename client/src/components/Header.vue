@@ -5,12 +5,12 @@
       </v-app-bar-nav-icon>
     </template>
 
-    <v-app-bar-title>{{ appName }}</v-app-bar-title>
+    <v-app-bar-title>ToDo App</v-app-bar-title>
 
     <template #append>
       <v-btn class="text-capitalize">
         <v-icon :icon="mdiLogin" />
-        &thinsp;{{ signOutText }}
+        &thinsp;Sign Out
       </v-btn>
     </template>
   </v-app-bar>
@@ -23,7 +23,5 @@ import SideMenu from '@/components/SideMenu.vue';
 import { mdiLogin } from '@mdi/js';
 import { ref } from 'vue';
 
-const appName = ref('ToDo App');
-const signOutText = ref('Sign Out');
 const drawer = ref(false);
 </script>
