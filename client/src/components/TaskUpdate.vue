@@ -64,13 +64,17 @@ const handleCancel = () => {
   dialog.value = false;
 };
 
-watch(() => props.task, (newTask) => {
-  editingTask.value = {
-    title: newTask.title,
-    description: newTask.description,
-    due_date: newTask.due_date ? formatDate(newTask.due_date) : '',
-    status: newTask.status,
-    owner_id: newTask.owner_id,
-  };
-}, { immediate: true });
+watch(
+  () => props.task,
+  (newTask) => {
+    editingTask.value = {
+      title: newTask.title,
+      description: newTask.description,
+      due_date: newTask.due_date ? formatDate(newTask.due_date) : '',
+      status: newTask.status,
+      owner_id: newTask.owner_id,
+    };
+  },
+  { immediate: true },
+);
 </script>
