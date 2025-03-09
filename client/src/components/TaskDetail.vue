@@ -1,18 +1,10 @@
 <template>
   <v-container>
-    <div class="d-flex justify-first">
-      <v-btn
-        variant="outlined"
-        class="text-capitalize"
-        @click="router.push('/')"
-        >Go Back</v-btn
-      >
-    </div>
-
     <div class="d-flex justify-end">
       <TaskEdit :task="task" />
       <TaskDelete :task="task" />
     </div>
+    <p class="text-h4">タスク詳細</p>
 
     <v-card class="md:mx-4 my-4 md:px-4 py-4">
       <v-table hover>
@@ -51,11 +43,10 @@
 import TaskEdit from '@/components/TaskEdit.vue';
 import TaskDelete from '@/components/TaskDelete.vue';
 import { ref, onMounted } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { useRoute } from 'vue-router';
 import { useTaskStore } from '@/stores/task.js';
 import { formatDateTime } from '@/utils/dateUtils';
 
-const router = useRouter();
 const route = useRoute();
 const taskStore = useTaskStore();
 

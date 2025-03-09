@@ -9,7 +9,7 @@
   <v-dialog v-model="dialog" max-width="500">
     <v-sheet>
       <v-sheet class="my-2 mx-5">
-        <p class="my-4">このタスクを削除します。</p>
+        <p class="my-4">以下のタスクを削除しますか？</p>
         <p class="my-4 text-h6">
           {{ task.title }}
         </p>
@@ -20,14 +20,14 @@
             color="error"
             @click="handleDelete(true)"
           >
-            {{ deleteButtonText }}
+            削除
           </v-btn>
           <v-btn
             class="mx-2 text-capitalize"
             variant="outlined"
             @click="handleCancel(false)"
           >
-            {{ cancelButtonText }}
+            キャンセル
           </v-btn>
         </div>
       </v-sheet>
@@ -49,8 +49,6 @@ const props = defineProps({
 });
 
 const dialog = ref(false);
-const deleteButtonText = ref('Delete');
-const cancelButtonText = ref('Cancel');
 
 const router = useRouter();
 const taskStore = useTaskStore();

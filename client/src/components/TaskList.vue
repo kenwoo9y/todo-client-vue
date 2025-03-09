@@ -3,7 +3,7 @@
     <div class="d-flex justify-end">
       <TaskCreate />
     </div>
-    <p class="text-h3">ToDo</p>
+    <p class="text-h4">ToDo</p>
 
     <v-data-table
       v-model:items-per-page="itemsPerPage"

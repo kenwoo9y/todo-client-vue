@@ -8,18 +8,18 @@
 
   <v-dialog v-model="dialog" max-width="800">
     <v-sheet>
-      <v-card title="Edit Task"></v-card>
+      <v-card title="タスク更新"></v-card>
       <v-sheet class="my-2 mx-5">
-        <v-text-field v-model="title" label="Title*" required></v-text-field>
+        <v-text-field v-model="title" label="タイトル*" required></v-text-field>
 
-        <v-textarea v-model="description" label="Description"></v-textarea>
+        <v-textarea v-model="description" label="詳細"></v-textarea>
 
         <DatePicker v-model="dueDate" />
 
         <v-select
           v-model="status"
           :items="statusList"
-          label="Status*"
+          label="ステータス*"
           required
         ></v-select>
 
@@ -29,14 +29,14 @@
             color="warning"
             @click="handleUpdate"
           >
-            {{ updateButtonText }}
+            更新
           </v-btn>
           <v-btn
             class="mx-2 text-capitalize"
             variant="outlined"
             @click="handleCancel"
           >
-            {{ cancelButtonText }}
+            キャンセル
           </v-btn>
         </div>
       </v-sheet>
@@ -58,8 +58,6 @@ const props = defineProps({
 });
 
 const dialog = ref(false);
-const updateButtonText = ref('Update');
-const cancelButtonText = ref('Cancel');
 const statusList = ref(['ToDo', 'Doing', 'Done']);
 
 const title = ref('');
@@ -74,9 +72,6 @@ const openDialog = () => {
   description.value = props.task.description;
   status.value = props.task.status;
   dueDate.value = props.task.due_date;
-  console.log('Edit task:', props.task);
-  console.log('期限日：', dueDate.value);
-
   dialog.value = true;
 };
 

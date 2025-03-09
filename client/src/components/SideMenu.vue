@@ -19,7 +19,7 @@ import { ref } from 'vue';
 
 const model = defineModel({
   type: Boolean,
-  default: false
+  default: false,
 });
 const items = ref([
   { title: 'Home', icon: mdiHome, link: { name: 'home' } },

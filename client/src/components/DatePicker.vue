@@ -1,7 +1,7 @@
 <template>
   <v-text-field
     v-model="formattedDate"
-    label="Due Date"
+    label="期日"
     readonly
     @click="showDatePicker = true"
   ></v-text-field>

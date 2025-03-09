@@ -1,34 +1,26 @@
 <template>
-  <v-btn
-    color="primary"
-    variant="outlined"
-    class="text-capitalize"
-    @click="openDialog"
-  >
-    {{ addButtonText }}
+  <v-btn color="primary" class="text-capitalize" @click="openDialog">
+    タスク作成
   </v-btn>
 
   <v-dialog v-model="dialog" max-width="800">
     <v-sheet>
-      <v-card title="New Task"></v-card>
+      <v-card title="新規タスク作成"></v-card>
       <v-sheet class="my-2 mx-5">
         <v-text-field
           v-model="newTask.title"
-          label="Title*"
+          label="タイトル*"
           required
         ></v-text-field>
 
-        <v-textarea
-          v-model="newTask.description"
-          label="Description"
-        ></v-textarea>
+        <v-textarea v-model="newTask.description" label="詳細"></v-textarea>
 
         <date-picker v-model="newTask.dueDate"></date-picker>
 
         <v-select
           v-model="newTask.status"
           :items="statusList"
-          label="Status*"
+          label="ステータス*"
           required
         ></v-select>
 
@@ -38,14 +30,14 @@
             color="primary"
             @click="handleClick(true)"
           >
-            {{ registerButtonText }}
+            作成
           </v-btn>
           <v-btn
             class="mx-2 text-capitalize"
             variant="outlined"
             @click="handleClick(false)"
           >
-            {{ cancelButtonText }}
+            キャンセル
           </v-btn>
         </div>
       </v-sheet>
@@ -59,9 +51,6 @@ import { ref } from 'vue';
 import { useTaskStore } from '@/stores/task.js';
 
 const dialog = ref(false);
-const addButtonText = ref('Add Task');
-const registerButtonText = ref('Register Now');
-const cancelButtonText = ref('Cancel');
 const statusList = ref(['ToDo', 'Doing', 'Done']);
 
 const taskStore = useTaskStore();
