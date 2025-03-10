@@ -19,7 +19,7 @@
         {{ index + 1 }}
       </template>
       <template #[`item.actions`]="{ item }">
-        <TaskEdit :task="item" />
+        <TaskUpdate :task="item" />
         <TaskDelete :task="item" />
       </template>
     </v-data-table>
@@ -28,7 +28,7 @@
 
 <script setup>
 import TaskCreate from '@/components/TaskCreate.vue';
-import TaskEdit from '@/components/TaskUpdate.vue';
+import TaskUpdate from '@/components/TaskUpdate.vue';
 import TaskDelete from '@/components/TaskDelete.vue';
 import { ref, onMounted, watch } from 'vue';
 import { useRouter } from 'vue-router';

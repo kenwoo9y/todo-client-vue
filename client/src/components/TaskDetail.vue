@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <div class="d-flex justify-end">
-      <TaskEdit :task="task" />
+      <TaskUpdate :task="task" />
       <TaskDelete :task="task" />
     </div>
     <p class="text-h4">タスク詳細</p>
@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-import TaskEdit from '@/components/TaskUpdate.vue';
+import TaskUpdate from '@/components/TaskUpdate.vue';
 import TaskDelete from '@/components/TaskDelete.vue';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
