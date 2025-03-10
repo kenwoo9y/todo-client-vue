@@ -38,7 +38,7 @@ const openDialog = () => {
 };
 
 const handleSubmit = (formData) => {
-  taskStore.addTask(formData);
+  taskStore.createTask(formData);
   newTask.value = {
     title: '',
     description: '',

@@ -23,17 +23,17 @@ export const useTaskStore = defineStore('task', () => {
   }
 
   // actions
-  async function addTask(task) {
+  async function createTask(task) {
     try {
-      const formattedTask = {
+      const taskPayload = {
         title: task.title,
         description: task.description,
-        due_date: formatDate(task.dueDate),
+        due_date: formatDate(task.due_date),
         status: task.status,
         owner_id: task.owner_id,
       };
-      console.log('Sending task:', formattedTask);
-      const response = await apiClient.post('/tasks', formattedTask);
+      console.log('Sending task:', taskPayload);
+      const response = await apiClient.post('/tasks', taskPayload);
       tasks.value.push(response.data);
     } catch (error) {
       console.error('Failed to add task:', error);
@@ -71,7 +71,7 @@ export const useTaskStore = defineStore('task', () => {
     tasks,
     fetchTasks,
     fetchTask,
-    addTask,
+    createTask,
     updateTask,
     deleteTask,
   };
