@@ -42,11 +42,12 @@ export const useTaskStore = defineStore('task', () => {
 
   async function updateTask(taskUpdate) {
     try {
-      const response = await apiClient.put(`/tasks/${taskUpdate.id}`, {
+      const response = await apiClient.patch(`/tasks/${taskUpdate.id}`, {
         title: taskUpdate.title,
         description: taskUpdate.description,
         due_date: formatDate(taskUpdate.due_date),
         status: taskUpdate.status,
+        owner_id: taskUpdate.owner_id,
       });
 
       const index = tasks.value.findIndex((task) => task.id === taskUpdate.id);
