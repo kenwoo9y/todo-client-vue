@@ -10,7 +10,7 @@
     <v-sheet>
       <v-card title="タスク更新"></v-card>
       <task-form
-        :initial-data="editingTask"
+        :initial-data="formData"
         :status-list="statusList"
         submit-text="更新"
         submit-color="warning"
@@ -31,19 +31,19 @@ import { formatDate } from '@/utils/dateUtils';
 const props = defineProps({
   task: {
     type: Object,
-    required: true,
-  },
+    required: true
+  }
 });
 
 const dialog = ref(false);
 const statusList = ref(['ToDo', 'Doing', 'Done']);
 
-const editingTask = ref({
-  title: props.task.title,
-  description: props.task.description,
-  due_date: props.task.due_date ? formatDate(props.task.due_date) : '',
-  status: props.task.status,
-  owner_id: props.task.owner_id,
+const formData = ref({
+  title: '',
+  description: '',
+  status: '',
+  due_date: '',
+  owner_id: '',
 });
 
 const taskStore = useTaskStore();
@@ -67,14 +67,16 @@ const handleCancel = () => {
 watch(
   () => props.task,
   (newTask) => {
-    editingTask.value = {
-      title: newTask.title,
-      description: newTask.description,
-      due_date: newTask.due_date ? formatDate(newTask.due_date) : '',
-      status: newTask.status,
-      owner_id: newTask.owner_id,
-    };
+    if (newTask) {
+      formData.value = {
+        title: newTask.title || '',
+        description: newTask.description || '',
+        status: newTask.status || '',
+        due_date: newTask.due_date ? formatDate(newTask.due_date) : '',
+        owner_id: newTask.owner_id || '',
+      };
+    }
   },
-  { immediate: true },
+  { immediate: true }
 );
 </script>

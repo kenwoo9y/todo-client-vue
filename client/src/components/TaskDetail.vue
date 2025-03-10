@@ -42,7 +42,7 @@
 <script setup>
 import TaskUpdate from '@/components/TaskUpdate.vue';
 import TaskDelete from '@/components/TaskDelete.vue';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useTaskStore } from '@/stores/task.js';
 import { formatDateTime } from '@/utils/dateUtils';
@@ -59,15 +59,53 @@ const headerTitles = ref([
   '更新日時',
 ]);
 
-const task = ref({});
+const task = ref(null);
 
-onMounted(async () => {
-  const taskId = parseInt(route.params.id, 10);
-  const fetchedTask = taskStore.fetchTask(taskId);
-  if (fetchedTask) {
-    task.value = fetchedTask;
+// タスクの初期読み込み
+const loadTask = async () => {
+  const taskId = parseInt(route.params.id); // 文字列から数値に変換
+  if (!taskId) return;
+  
+  // タスクストアから該当するタスクを検索
+  const foundTask = taskStore.tasks.find(t => t.id === taskId);
+  if (foundTask) {
+    task.value = { ...foundTask }; // オブジェクトをコピー
   } else {
-    console.error(`Task with id ${taskId} not found`);
+    // タスクが見つからない場合は、APIから直接取得を試みる
+    try {
+      await taskStore.fetchTask(taskId);
+      task.value = taskStore.tasks.find(t => t.id === taskId) || null;
+    } catch (error) {
+      console.error('タスクの取得に失敗しました:', error);
+      task.value = null;
+    }
   }
+};
+
+// タスクストアの変更を監視
+watch(
+  () => [...taskStore.tasks], // 配列の中身の変更を確実に検知
+  (newTasks) => {
+    if (!task.value?.id) return;
+    const updatedTask = newTasks.find(t => t.id === task.value.id);
+    if (updatedTask) {
+      task.value = { ...updatedTask };
+    }
+  },
+  { deep: true } // ネストされたオブジェクトの変更も検知
+);
+
+// ルートパラメータが変更された時にタスクを再読み込み
+watch(
+  () => route.params.id,
+  async () => {
+    await loadTask();
+  },
+  { immediate: true } // コンポーネントの初期化時にも実行
+);
+
+// コンポーネントのマウント時にタスクを読み込む
+onMounted(async () => {
+  await loadTask();
 });
 </script>
