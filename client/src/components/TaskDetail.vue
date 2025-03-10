@@ -1,41 +1,50 @@
 <template>
   <v-container>
-    <div class="d-flex justify-end">
-      <TaskUpdate :task="task" />
-      <TaskDelete :task="task" />
+    <!-- タスクがnullの場合はローディング表示 -->
+    <div v-if="!task">
+      <v-progress-circular indeterminate color="primary"></v-progress-circular>
+      <p>読み込み中...</p>
     </div>
-    <p class="text-h4">タスク詳細</p>
+    
+    <!-- タスクが存在する場合のみ表示 -->
+    <template v-else>
+      <div class="d-flex justify-end">
+        <TaskUpdate :task="task" />
+        <TaskDelete :task="task" />
+      </div>
+      <p class="text-h4">タスク詳細</p>
 
-    <v-card class="md:mx-4 my-4 md:px-4 py-4">
-      <v-table hover>
-        <tbody>
-          <tr>
-            <td>{{ headerTitles[0] }}</td>
-            <td>{{ task.title }}</td>
-          </tr>
-          <tr>
-            <td>{{ headerTitles[1] }}</td>
-            <td>{{ task.description }}</td>
-          </tr>
-          <tr>
-            <td>{{ headerTitles[2] }}</td>
-            <td>{{ task.due_date }}</td>
-          </tr>
-          <tr>
-            <td>{{ headerTitles[3] }}</td>
-            <td>{{ task.status }}</td>
-          </tr>
-          <tr>
-            <td>{{ headerTitles[4] }}</td>
-            <td>{{ formatDateTime(task.created_at) }}</td>
-          </tr>
-          <tr>
-            <td>{{ headerTitles[5] }}</td>
-            <td>{{ formatDateTime(task.updated_at) }}</td>
-          </tr>
-        </tbody>
-      </v-table>
-    </v-card>
+      <v-card class="md:mx-4 my-4 md:px-4 py-4">
+        <v-table hover>
+          <tbody>
+            <tr>
+              <td>{{ headerTitles[0] }}</td>
+              <td>{{ task.title }}</td>
+            </tr>
+            <tr>
+              <td>{{ headerTitles[1] }}</td>
+              <td>{{ task.description }}</td>
+            </tr>
+            <tr>
+              <td>{{ headerTitles[2] }}</td>
+              <td>{{ task.due_date }}</td>
+            </tr>
+            <tr>
+              <td>{{ headerTitles[3] }}</td>
+              <td>{{ task.status }}</td>
+            </tr>
+            <tr>
+              <td>{{ headerTitles[4] }}</td>
+              <td>{{ formatDateTime(task.created_at) }}</td>
+            </tr>
+            <tr>
+              <td>{{ headerTitles[5] }}</td>
+              <td>{{ formatDateTime(task.updated_at) }}</td>
+            </tr>
+          </tbody>
+        </v-table>
+      </v-card>
+    </template>
   </v-container>
 </template>
 
