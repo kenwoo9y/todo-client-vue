@@ -9,7 +9,6 @@ export const useTaskStore = defineStore('task', () => {
 
   // getters
   async function fetchTasks() {
-    //return tasks.value;
     try {
       const response = await apiClient.get('/tasks');
       tasks.value = response.data;
