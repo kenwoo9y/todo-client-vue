@@ -8,11 +8,7 @@ export const useTaskStore = defineStore('task', () => {
   const tasks = ref([]);
 
   // getters
-  function getTask(id) {
-    return tasks.value.find((task) => task.id === id);
-  }
-
-  async function getTasks() {
+  async function fetchTasks() {
     //return tasks.value;
     try {
       const response = await apiClient.get('/tasks');
@@ -21,6 +17,10 @@ export const useTaskStore = defineStore('task', () => {
     } catch (error) {
       console.error('Failed to get tasks:', error);
     }
+  }
+  
+  function fetchTask(id) {
+    return tasks.value.find((task) => task.id === id);
   }
 
   // actions
@@ -70,8 +70,8 @@ export const useTaskStore = defineStore('task', () => {
 
   return {
     tasks,
-    getTask,
-    getTasks,
+    fetchTasks,
+    fetchTask,
     addTask,
     updateTask,
     deleteTask,

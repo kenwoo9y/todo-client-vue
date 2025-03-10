@@ -63,8 +63,7 @@ const task = ref({});
 
 onMounted(async () => {
   const taskId = parseInt(route.params.id, 10);
-  await taskStore.getTasks();
-  const fetchedTask = taskStore.getTask(taskId);
+  const fetchedTask = taskStore.fetchTask(taskId);
   if (fetchedTask) {
     task.value = fetchedTask;
   } else {

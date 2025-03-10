@@ -57,7 +57,7 @@ const headers = ref([
 const tasks = ref([]);
 
 onMounted(async () => {
-  await taskStore.getTasks(); // 非同期関数を呼び出してタスクを取得
+  await taskStore.fetchTasks(); // 非同期関数を呼び出してタスクを取得
   tasks.value = taskStore.tasks; // 取得したタスクをtasksに設定
 });
 
