@@ -18,8 +18,24 @@ export const useTaskStore = defineStore('task', () => {
     }
   }
   
-  function fetchTask(id) {
-    return tasks.value.find((task) => task.id === id);
+  async function fetchTask(id) {
+    try {
+      const response = await apiClient.get(`/tasks/${id}`);
+      const fetchedTask = response.data;
+      
+      // 既存のタスク配列内で更新
+      const index = tasks.value.findIndex(task => task.id === id);
+      if (index !== -1) {
+        tasks.value[index] = fetchedTask;
+      } else {
+        tasks.value.push(fetchedTask);
+      }
+      
+      return fetchedTask;
+    } catch (error) {
+      console.error('Failed to fetch task:', error);
+      throw error;
+    }
   }
 
   // actions
