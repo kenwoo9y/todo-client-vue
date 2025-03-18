@@ -5,7 +5,7 @@
       <v-progress-circular indeterminate color="primary"></v-progress-circular>
       <p>読み込み中...</p>
     </div>
-    
+
     <!-- タスクが存在する場合のみ表示 -->
     <template v-else>
       <div class="d-flex justify-end">
@@ -74,16 +74,16 @@ const task = ref(null);
 const loadTask = async () => {
   const taskId = parseInt(route.params.id); // 文字列から数値に変換
   if (!taskId) return;
-  
+
   // タスクストアから該当するタスクを検索
-  const foundTask = taskStore.tasks.find(t => t.id === taskId);
+  const foundTask = taskStore.tasks.find((t) => t.id === taskId);
   if (foundTask) {
     task.value = { ...foundTask }; // オブジェクトをコピー
   } else {
     // タスクが見つからない場合は、APIから直接取得を試みる
     try {
       await taskStore.fetchTask(taskId);
-      task.value = taskStore.tasks.find(t => t.id === taskId) || null;
+      task.value = taskStore.tasks.find((t) => t.id === taskId) || null;
     } catch (error) {
       console.error('タスクの取得に失敗しました:', error);
       task.value = null;
@@ -96,12 +96,12 @@ watch(
   () => [...taskStore.tasks], // 配列の中身の変更を確実に検知
   (newTasks) => {
     if (!task.value?.id) return;
-    const updatedTask = newTasks.find(t => t.id === task.value.id);
+    const updatedTask = newTasks.find((t) => t.id === task.value.id);
     if (updatedTask) {
       task.value = { ...updatedTask };
     }
   },
-  { deep: true } // ネストされたオブジェクトの変更も検知
+  { deep: true }, // ネストされたオブジェクトの変更も検知
 );
 
 // ルートパラメータが変更された時にタスクを再読み込み
@@ -110,7 +110,7 @@ watch(
   async () => {
     await loadTask();
   },
-  { immediate: true } // コンポーネントの初期化時にも実行
+  { immediate: true }, // コンポーネントの初期化時にも実行
 );
 
 // コンポーネントのマウント時にタスクを読み込む

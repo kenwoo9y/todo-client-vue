@@ -31,8 +31,8 @@ import { formatDate } from '@/utils/dateUtils';
 const props = defineProps({
   task: {
     type: Object,
-    required: true
-  }
+    required: true,
+  },
 });
 
 const dialog = ref(false);
@@ -77,6 +77,6 @@ watch(
       };
     }
   },
-  { immediate: true }
+  { immediate: true },
 );
 </script>
