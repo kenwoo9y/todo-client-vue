@@ -5,7 +5,14 @@
       </v-app-bar-nav-icon>
     </template>
 
-    <v-app-bar-title>ToDo App</v-app-bar-title>
+    <v-app-bar-title>
+      <router-link
+        :to="{ name: 'home' }"
+        style="text-decoration: none; color: inherit"
+      >
+        ToDo App
+      </router-link>
+    </v-app-bar-title>
 
     <template #append>
       <v-btn class="text-capitalize">
