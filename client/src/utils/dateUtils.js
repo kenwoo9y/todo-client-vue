@@ -28,7 +28,7 @@ export function formatDateTime(originalDateTime) {
   if (!originalDateTime) return '';
 
   // 入力された文字列をDateオブジェクトに変換
-  const date = new Date(originalDateTime);
+  const date = new Date(originalDateTime + 'Z');
 
   // 日本時間に変換
   const options = {
