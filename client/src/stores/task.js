@@ -1,6 +1,5 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
-import { formatDate } from '@/utils/dateUtils';
 import { apiClient } from '@/plugins/axios';
 
 export const useTaskStore = defineStore('task', () => {
@@ -44,7 +43,7 @@ export const useTaskStore = defineStore('task', () => {
       const taskPayload = {
         title: task.title,
         description: task.description,
-        due_date: formatDate(task.due_date),
+        due_date: task.due_date,
         status: task.status,
         owner_id: task.owner_id,
       };
@@ -61,7 +60,7 @@ export const useTaskStore = defineStore('task', () => {
       const response = await apiClient.patch(`/tasks/${taskUpdate.id}`, {
         title: taskUpdate.title,
         description: taskUpdate.description,
-        due_date: formatDate(taskUpdate.due_date),
+        due_date: taskUpdate.due_date,
         status: taskUpdate.status,
         owner_id: taskUpdate.owner_id,
       });

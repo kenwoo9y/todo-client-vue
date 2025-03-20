@@ -26,7 +26,6 @@ import { mdiPencil } from '@mdi/js';
 import { ref, defineProps, watch } from 'vue';
 import { useTaskStore } from '@/stores/task.js';
 import TaskForm from '@/components/TaskForm.vue';
-import { formatDate } from '@/utils/dateUtils';
 
 const props = defineProps({
   task: {
@@ -72,7 +71,7 @@ watch(
         title: newTask.title || '',
         description: newTask.description || '',
         status: newTask.status || '',
-        due_date: newTask.due_date ? formatDate(newTask.due_date) : '',
+        due_date: newTask.due_date ? newTask.due_date : '',
         owner_id: newTask.owner_id || '',
       };
     }
