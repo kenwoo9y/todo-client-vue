@@ -27,9 +27,9 @@
 </template>
 
 <script setup>
-import TaskCreate from '@/components/TaskCreate.vue';
-import TaskUpdate from '@/components/TaskUpdate.vue';
-import TaskDelete from '@/components/TaskDelete.vue';
+import TaskCreate from '@/components/features/tasks/TaskCreate.vue';
+import TaskUpdate from '@/components/features/tasks/TaskUpdate.vue';
+import TaskDelete from '@/components/features/tasks/TaskDelete.vue';
 import { ref, onMounted, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { useTaskStore } from '@/stores/task.js';

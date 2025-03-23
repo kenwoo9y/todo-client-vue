@@ -25,7 +25,8 @@
 import { mdiPencil } from '@mdi/js';
 import { ref, defineProps, watch } from 'vue';
 import { useTaskStore } from '@/stores/task.js';
-import TaskForm from '@/components/TaskForm.vue';
+import TaskForm from '@/components/features/tasks/TaskForm.vue';
+import { formatDateForAPI } from '@/utils/dateUtils';
 
 const props = defineProps({
   task: {
@@ -52,9 +53,15 @@ const openDialog = () => {
 };
 
 const handleSubmit = (formData) => {
+  // 日付をISO形式に変換
+  const formattedData = {
+    ...formData,
+    due_date: formatDateForAPI(formData.due_date),
+  };
+
   taskStore.updateTask({
     id: props.task.id,
-    ...formData,
+    ...formattedData,
   });
   dialog.value = false;
 };

@@ -19,8 +19,8 @@
 <script setup>
 import { ref } from 'vue';
 import { useTaskStore } from '@/stores/task.js';
-import TaskForm from '@/components/TaskForm.vue';
-
+import TaskForm from '@/components/features/tasks/TaskForm.vue';
+import { formatDateForAPI } from '@/utils/dateUtils';
 const dialog = ref(false);
 const statusList = ref(['ToDo', 'Doing', 'Done']);
 
@@ -30,7 +30,7 @@ const newTask = ref({
   description: '',
   due_date: '',
   status: 'ToDo',
-  owner_id: '1',
+  owner_id: 1,
 });
 
 const openDialog = () => {
@@ -38,13 +38,19 @@ const openDialog = () => {
 };
 
 const handleSubmit = (formData) => {
-  taskStore.createTask(formData);
+  // 日付をISO形式に変換
+  const formattedData = {
+    ...formData,
+    due_date: formatDateForAPI(formData.due_date),
+  };
+
+  taskStore.createTask(formattedData);
   newTask.value = {
     title: '',
     description: '',
     due_date: '',
     status: 'ToDo',
-    owner_id: '1',
+    owner_id: 1,
   };
   dialog.value = false;
 };

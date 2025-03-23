@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import TaskDetail from '@/components/TaskDetail.vue';
+import TaskDetail from '@/components/features/tasks/TaskDetail.vue';
 </script>
