@@ -68,7 +68,7 @@
     ```
 
 ---
-This is a ToDo Web Client built with React, offering a seamless and intuitive user experience.
+This is a ToDo Web Client built with Vue.js, offering a seamless and intuitive user experience.
 
 ## Setup
 ### Setup
