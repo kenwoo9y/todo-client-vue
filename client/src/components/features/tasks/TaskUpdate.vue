@@ -23,7 +23,7 @@
 
 <script setup>
 import { mdiPencil } from '@mdi/js';
-import { ref, defineProps, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { useTaskStore } from '@/stores/task.js';
 import TaskForm from '@/components/features/tasks/TaskForm.vue';
 import { formatDateForAPI } from '@/utils/dateUtils';

@@ -37,7 +37,7 @@
 
 <script setup>
 import { mdiDelete } from '@mdi/js';
-import { ref, defineProps } from 'vue';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useTaskStore } from '@/stores/task.js';
 
