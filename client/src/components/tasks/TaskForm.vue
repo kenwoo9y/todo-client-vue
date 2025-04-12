@@ -38,7 +38,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import DatePicker from '@/components/features/tasks/DatePicker.vue';
+import DatePicker from '@/components/tasks/DatePicker.vue';
 
 const props = defineProps({
   initialData: {

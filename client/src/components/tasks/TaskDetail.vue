@@ -49,8 +49,8 @@
 </template>
 
 <script setup>
-import TaskUpdate from '@/components/features/tasks/TaskUpdate.vue';
-import TaskDelete from '@/components/features/tasks/TaskDelete.vue';
+import TaskUpdate from '@/components/tasks/TaskUpdate.vue';
+import TaskDelete from '@/components/tasks/TaskDelete.vue';
 import { ref, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useTaskStore } from '@/stores/task.js';

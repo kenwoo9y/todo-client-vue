@@ -19,7 +19,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useTaskStore } from '@/stores/task.js';
-import TaskForm from '@/components/features/tasks/TaskForm.vue';
+import TaskForm from '@/components/tasks/TaskForm.vue';
 import { formatDateForAPI } from '@/utils/dateUtils';
 const dialog = ref(false);
 const statusList = ref(['ToDo', 'Doing', 'Done']);
