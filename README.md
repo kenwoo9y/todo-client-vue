@@ -1,81 +1,47 @@
 # todo-client-vue
 
-## セットアップ
-### 必要なツール
-- Docker & Docker Compose
-- Node.js v22
-- `make` command
-
-### 初期設定
-1. リポジトリをクローンする。
-    ```
-    $ git clone https://github.com/kenwoo9y/todo-client-vue.git
-    $ cd todo-client-vue
-    ```
-
-2. 必要なDockerイメージをビルドする。
-    ```
-    $ make build-local
-    ```
-
-3. コンテナを起動する。
-    ```
-    $ make up
-    ```
-
-## 使用方法
-### コンテナ管理
-- コンテナの状態確認:
-    ```
-    $ make ps
-    ```
-- コンテナログの確認:
-    ```
-    $ make logs
-    ```
-- コンテナ停止:
-    ```
-    $ make down
-    ```
-
-## 開発
-### テストの実行
-- テスト実行:
-    ```
-    $ make test
-    ```
-- テストカバレッジ:
-    ```
-    $ make test-coverage
-    ```
-
-### コード品質チェック
-- Lintチェック:
-    ```
-    $ make lint-check
-    ```
-- Lint修正:
-    ```
-    $ make lint-fix
-    ```
-- フォーマットチェック:
-    ```
-    $ make format-check
-    ```
-- フォーマット修正:
-    ```
-    $ make format-fix
-    ```
-
----
 This is a ToDo Web Client built with Vue.js, offering a seamless and intuitive user experience.
 
-## Setup
-### Setup
-- Docker & Docker Compose
-- Node.js v22
-- `make` command
+## Tech Stack
+![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Vuetify](https://img.shields.io/badge/Vuetify-1867C0?style=for-the-badge&logo=vuetify&logoColor=AEDDFF)
+![Axios](https://img.shields.io/badge/Axios-5A29E4.svg?style=for-the-badge&logo=Axios&logoColor=white)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Vitest](https://img.shields.io/badge/-Vitest-252529?style=for-the-badge&logo=vitest&logoColor=FCC72B)
+![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
+![Prettier](https://img.shields.io/badge/prettier-%23F7B93E.svg?style=for-the-badge&logo=prettier&logoColor=black)
+![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 
+### Programming Languages
+- [JavaScript](https://developer.mozilla.org/en/docs/Web/JavaScript) - Primary development language
+
+### Frontend
+- [Vue.js](https://vuejs.org/) v3.4.21 - Progressive JavaScript framework
+- [Vuetify](https://vuetifyjs.com/) v3.6.3 - Material Design component framework
+- [Vue Router](https://router.vuejs.org/) v4.3.0 - Official routing library for Vue.js
+- [Pinia](https://pinia.vuejs.org/) v2.1.7 - State management library for Vue.js
+- [Axios](https://axios-http.com/) v1.7.2 - Promise based HTTP client
+
+### Development Environment
+- [Node.js](https://nodejs.org/) v22 - JavaScript runtime environment
+- [npm](https://www.npmjs.com/) v10.2.4 - Node.js package manager
+- [Vite](https://vitejs.dev/) v5.2.8 - Next generation frontend build tool
+- [Docker](https://www.docker.com/) - Containerization platform
+- [Docker Compose](https://docs.docker.com/compose/) - Tool for defining and running multi-container Docker applications
+
+### Testing & Quality Assurance
+- [Vitest](https://vitest.dev/) v3.0.9 - Vite-native unit testing framework
+- [ESLint](https://eslint.org/) v9.17.0 - JavaScript code quality and style checker
+- [Prettier](https://prettier.io/) v3.2.5 - Code formatter
+
+### CI/CD
+- GitHub Actions - Continuous Integration and Deployment
+
+## Setup
 ### Initial Setup
 1. Clone this repository:
     ```
