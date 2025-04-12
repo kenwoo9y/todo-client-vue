@@ -10,6 +10,8 @@
       :headers="headers"
       :items="tasks"
       :items-per-page-options="pages"
+      :loading="loading"
+      loading-text="データを読み込み中..."
       items-per-page-text="表示行数"
       class="elevation-1"
       hover
@@ -30,14 +32,15 @@
 import TaskCreate from '@/components/tasks/TaskCreate.vue';
 import TaskUpdate from '@/components/tasks/TaskUpdate.vue';
 import TaskDelete from '@/components/tasks/TaskDelete.vue';
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useTaskStore } from '@/stores/task.js';
 
 const router = useRouter();
 const taskStore = useTaskStore();
-
 const itemsPerPage = ref(5);
+const tasks = computed(() => taskStore.tasks);
+const loading = computed(() => taskStore.loading);
 
 const pages = ref([
   { value: 5, title: '5' },
@@ -54,22 +57,11 @@ const headers = ref([
   { title: '操作', align: 'end', sortable: false, key: 'actions' },
 ]);
 
-const tasks = ref([]);
-
 onMounted(async () => {
-  await taskStore.fetchTasks(); // 非同期関数を呼び出してタスクを取得
-  tasks.value = taskStore.tasks; // 取得したタスクをtasksに設定
+  taskStore.fetchTasks();
 });
 
-watch(
-  () => taskStore.tasks,
-  (newTasks) => {
-    tasks.value = newTasks;
-  },
-);
-
 const handleRowClick = (event, row) => {
-  console.log('Clicked item:', row.item);
   router.push({ path: `/detail/${row.item.id}` });
 };
 </script>
