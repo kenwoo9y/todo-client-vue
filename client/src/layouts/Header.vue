@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-import SideMenu from '@/components/layouts/SideMenu.vue';
+import SideMenu from '@/layouts/SideMenu.vue';
 import { mdiLogin } from '@mdi/js';
 import { ref } from 'vue';
 
